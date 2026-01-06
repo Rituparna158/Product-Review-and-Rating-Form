@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PRODUCT-REVIEW-AND-RATING</title>
+        <link rel="stylesheet" href="Product-review-form.css">
+
+        <!-- Font Awesome Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ </head>
+<body>
+    <h2 class="main-heading">PRODUCT-REVIEW-AND-RATING</h2>
+    <div class="main-container">
+        <div class="top-container">
+                <form>
+                    <fieldset>
+                        <legend>Product Details:</legend>
+                        <label for="pname">Product Name:</label>
+                        <input type="text" id="pname" name="pname"><br><br>
+
+                        <lable for="sku">Product SKU:</lable>
+                        <input type="text" id="sku" name="sku"><br><br>
+
+                        <lablel for="dt">Purchase Date:</lablel>
+                        <input type="date" id="dt" name="dt" required><br><br>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Product Rating:</legend>
+                            <lablel for="Overall-rating">Overall Rating:</lablel>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span><br><br>
+
+                            <lablel for="Quality-rating">Quality Rating:</lablel>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span><br><br>
+
+                            <lablel for="Value for money">Value for money:</lablel>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span><br><br>
+
+                            <lablel for="Delivey Experience">Delivery Experience:</lablel>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span><br><br>
+
+                            <lablel for="Customer Service">Customer Service:</lablel>:</lablel>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span><br><br>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Review:</legend>
+                            <label for="review title">Review Title:</label>
+                            <input type="text" id="review title" name="review title" min="10" max="100" required><br><br>
+
+                            <lable for="detailed review">Detailed Review:</lable>
+                            <textarea id="detailed review" name="detailed review" required min="30" max="1000"></textarea><br><br>
+
+                            <label for="rt">Review Type:</label><br>
+
+                            <input type="radio" id="reviewtype" name="reviewtype" checked>
+                            <label for="reviewtype">Verified Purchase</label><br>
+
+                            <input type="radio" id="reviewtype" name="reviewtype">
+                            <label for="reviewtype">General Review</label><br><br>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Recommendations:</legend>
+                            <label for="pt">Product Tags:</label><br>
+
+                            <input type="checkbox" id="Best quality" name="Best quality">
+                            <label for="Best Quality"> Best Quality</label><br>
+
+                            <input type="checkbox" id="Great Value" name="Great Value" >
+                            <label for="Great Value">Great Value</label><br>
+
+                            <input type="checkbox" id="Good Packaging" name="Good Packaging">
+                            <label for="Great Value">Good Packaging</label><br>
+
+                            <input type="checkbox" id="Fast Delivery" name="Fast Delivery">
+                            <label for="Fast Delivery">Fast Delivery</label><br>
+
+                            <input type="checkbox" id="Highly Recommended" name="Highly Recommended">
+                            <label for="Highly Recommended">Highly Recommended</label><br>
+
+                            <input type="checkbox" id="Poor Quality" name="Poor Quality">
+                            <label for="Poor Quality">Poor Quality</label><br>
+
+                            <input type="checkbox" id="Not Worth Price" name="Not Worth Price">
+                            <label for="Not Worth Price">Not Worth Price</label><br>
+
+                            <input type="checkbox" id="Damaged on Arrival" name="Damaged on Arrival">
+                            <label for="Damaged on Arrival">Damaged on Arrival</label><br><br>
+
+                            <label for="recommend">Recommend this Product:</label><br>
+
+                            <input type="radio" id="Definitely Yes" name="Definitely Yes">
+                            <label for="Definitely Yes">Definitely Yes</label><br>
+
+                            <input type="radio" id="Yes" name="Yes">
+                            <label for="Yes">Yes</label><br>
+
+                            <input type="radio" id="Maybe" name="Maybe">
+                            <label for="Maybe">Maybe</label><br>
+
+                            <input type="radio" id="No" name="No">
+                            <label for="No">No</label><br>
+
+                            <input type="radio" id="Definitely No" name="Definitely No">
+                            <label for="Definitely No">Definitely No</label><br><br>
+                    </fieldset>
+                </form>
+    
+        </div>
+            <div class="middle">
+                <form>
+                    <fieldset>
+                        <legend>Terms:</legend>
+
+                    
+                            <input type="checkbox" id="Would Buy Again" name="Would Buy Again   ">
+                            <label for="Would Buy Again">Would Buy Again</label><br><br>
+
+                            <input type="checkbox" id="Make Review Public" name="Make Review Public" required>
+                            <label for="Make Review Public">Make Review Public</label><br><br>
+
+                            <input type="checkbox" id="Agree to Terms" name="Agree to Terms" required>
+                            <label for="Agree to Terms">Agree to Terms</label><br><br>
+                    </fieldset>
+
+
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+</body>
+</html>
