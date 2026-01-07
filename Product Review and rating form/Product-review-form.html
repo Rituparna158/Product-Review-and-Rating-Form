@@ -4,74 +4,110 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PRODUCT-REVIEW-AND-RATING</title>
-        <link rel="stylesheet" href="Product-review-form.css">
+        <link rel="stylesheet" href="css/Product-review-form.css">
 
         <!-- Font Awesome Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
  </head>
+ 
 <body>
-    <h2 class="main-heading">PRODUCT-REVIEW-AND-RATING</h2>
+    <div class="bg-img">
+    <div class="heading" >
+        <h2 class="main-heading">PRODUCT-REVIEW-AND-RATING</h2>
+        <h4 class="sub-heading">~We appreciate your feedback!</h4>
+    </div>  
     <div class="main-container">
-        <div class="top-container">
                 <form>
                     <fieldset>
                         <legend>Product Details:</legend>
-                        <label for="pname">Product Name:</label>
-                        <input type="text" id="pname" name="pname"><br><br>
+                        <label for="pname">Product Name:</label><br><br>
+                        <input type="text" id="pname" name="pname" placeholder="Enter Product Name" ><br><br>
 
-                        <lable for="sku">Product SKU:</lable>
-                        <input type="text" id="sku" name="sku"><br><br>
+                        <lable for="sku">Product SKU:</lable><br><br>
+                        <input type="text" id="sku" name="sku" placeholder="Enter Product SKU"><br><br>
 
-                        <lablel for="dt">Purchase Date:</lablel>
-                        <input type="date" id="dt" name="dt" required><br><br>
+                        <lablel for="dt">Purchase Date:</lablel><br><br>
+                        <input type="date" id="dt" name="dt" required placeholder="Enter Purchase Date"><br><br>
                     </fieldset>
                     
                     <fieldset>
                         <legend>Product Rating:</legend>
-                            <lablel for="Overall-rating">Overall Rating:</lablel>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span><br><br>
-
-                            <lablel for="Quality-rating">Quality Rating:</lablel>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span><br><br>
-
-                            <lablel for="Value for money">Value for money:</lablel>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span><br><br>
-
-                            <lablel for="Delivey Experience">Delivery Experience:</lablel>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span><br><br>
-
-                            <lablel for="Customer Service">Customer Service:</lablel>:</lablel>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span><br><br>
+                        <div class="product-rating">
+                            <div class="product-rating-1">
+                                <div class="product-rating-1-1">
+                                    <div class="product-rating-1-1-1">
+                                        <lablel for="Overall-rating">Overall Rating:</lablel>
+                                    </div>
+                                    <div class="star-rating" id="overallRating">
+                                        <span class="fa fa-star" data-value="1"></span>
+                                        <span class="fa fa-star" data-value="2"></span>
+                                        <span class="fa fa-star" data-value="3"></span>
+                                        <span class="fa fa-star" data-value="4"></span>
+                                        <span class="fa fa-star" data-value="5"></span><br><br>
+                                    </div>
+                                </div>
+                                <div class="product-rating-1-1">
+                                    <div class="product-rating-1-1-1">
+                                        <lablel for="Quality-rating">Quality Rating:</lablel>
+                                    </div>
+                                    <div class="star-rating" id="qualityRating">
+                                        <span class="fa fa-star"  data-value="1"></span>
+                                        <span class="fa fa-star "  data-value="2"></span>
+                                        <span class="fa fa-star "  data-value="3"></span>
+                                        <span class="fa fa-star"  data-value="4"></span>
+                                        <span class="fa fa-star"  data-value="5"></span><br><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-rating-2">
+                                <div class="product-rating-2-2">
+                                    <div class="product-rating-2-2-2">
+                                        <lablel for="Value for money">Value for money:</lablel>
+                                    </div>
+                                    <div class="star-rating" id="valueFormoneyRating">
+                                        <span class="fa fa-star" data-value="1"></span>
+                                        <span class="fa fa-star" data-value="2" ></span>
+                                        <span class="fa fa-star" data-value="3"></span>
+                                        <span class="fa fa-star" data-value="4"></span>
+                                        <span class="fa fa-star" data-value="5"></span><br><br>
+                                    </div>
+                                </div>
+                                <div class="product-rating-2-2">
+                                    <div class="product-rating-2-2-2">
+                                        <lablel for="Delivery Experience">Delivery Experience:</lablel>
+                                    </div>
+                                    <div class="star-rating" id="deliveryRating">
+                                        <span class="fa fa-star " data-value="1"></span>
+                                        <span class="fa fa-star " data-value="2"></span>
+                                        <span class="fa fa-star "data-value="3"></span>
+                                        <span class="fa fa-star" data-value="4"></span>
+                                        <span class="fa fa-star" data-value="5"></span><br><br>
+                                    </div>
+                                </div>
+                        
+                                <div class="product-rating-2-2">
+                                    <div class="product-rating-2-2-2">
+                                        <lablel for="Customer Service">Customer Service:</lablel>:</lablel>
+                                    </div>
+                                    <div class="star-rating" id="customerServiceRating">
+                                        <span class="fa fa-star" data-value="1"></span>
+                                        <span class="fa fa-star " data-value="2"></span>
+                                        <span class="fa fa-star" data-value="3"></span>
+                                        <span class="fa fa-star"  data-value="4"></span>
+                                        <span class="fa fa-star" data-value="5"></span><br><br>
+                                    </div>
+                                </div>
+                            </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Review:</legend>
-                            <label for="review title">Review Title:</label>
-                            <input type="text" id="review title" name="review title" min="10" max="100" required><br><br>
+                            <label for="review title">Review Title:</label><br><br>
+                            <input type="text" id="review title" name="review title" min="10" max="100" required placeholder="Enter Review Title"><br><br>
 
-                            <lable for="detailed review">Detailed Review:</lable>
-                            <textarea id="detailed review" name="detailed review" required min="30" max="1000"></textarea><br><br>
+                            <lable for="detailed review">Detailed Review:</lable><br><br>
+                            <textarea id="detailed review" name="detailed review" required min="30" max="1000" placeholder="Add Detailed Review"></textarea><br><br>
 
                             <label for="rt">Review Type:</label><br>
 
@@ -83,8 +119,8 @@
                     </fieldset>
 
                     <fieldset>
-                        <legend>Recommendations:</legend>
-                            <label for="pt">Product Tags:</label><br>
+                        <legend>Product Tags</legend>
+
 
                             <input type="checkbox" id="Best quality" name="Best quality">
                             <label for="Best Quality"> Best Quality</label><br>
@@ -109,29 +145,25 @@
 
                             <input type="checkbox" id="Damaged on Arrival" name="Damaged on Arrival">
                             <label for="Damaged on Arrival">Damaged on Arrival</label><br><br>
-
-                            <label for="recommend">Recommend this Product:</label><br>
-
-                            <input type="radio" id="Definitely Yes" name="Definitely Yes">
-                            <label for="Definitely Yes">Definitely Yes</label><br>
-
-                            <input type="radio" id="Yes" name="Yes">
-                            <label for="Yes">Yes</label><br>
-
-                            <input type="radio" id="Maybe" name="Maybe">
-                            <label for="Maybe">Maybe</label><br>
-
-                            <input type="radio" id="No" name="No">
-                            <label for="No">No</label><br>
-
-                            <input type="radio" id="Definitely No" name="Definitely No">
-                            <label for="Definitely No">Definitely No</label><br><br>
                     </fieldset>
-                </form>
-    
-        </div>
-            <div class="middle">
-                <form>
+                    <fieldset>
+                        <legend> Recommend This Product </legend>
+                            <input type="radio" id="recommendproduct" name="recommendproduct">
+                            <label for="recommendproduct">Definitely Yes</label><br>
+
+                            <input type="radio" id="recommendproduct" name="recommendproduct">
+                            <label for="recommendproduct">Yes</label><br>
+
+                            <input type="radio" id="recommendproduct" name="recommendproduct">
+                            <label for="recommendproduct">Maybe</label><br>
+
+                            <input type="radio" id="recommendproduct" name="recommendproduct">
+                            <label for="recommendproduct">No</label><br>
+
+                            <input type="radio" id="recommendproduct" name="recommendproduct">
+                            <label for="recommendproduct">Definitely No</label><br><br>
+                    </fieldset>
+
                     <fieldset>
                         <legend>Terms:</legend>
 
@@ -151,6 +183,9 @@
                     <input type="submit" value="Submit">
                 </form>
             </div>
+           
         </div>
+
+<script src="js/Product-review.js"></script>
 </body>
 </html>
