@@ -6,7 +6,7 @@
         <title>PRODUCT-REVIEW-AND-RATING</title>
         <link rel="stylesheet" href="css/Product-review-form.css">
 
-        <!-- Font Awesome Icon Library -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
  </head>
@@ -18,61 +18,72 @@
         <h4 class="sub-heading">~We appreciate your feedback!</h4>
     </div>  
     <div class="main-container">
-                <form>
+                <form >
+                    <!--PRODUCT DETAILS-->
                     <fieldset>
                         <legend>Product Details:</legend>
                         <label for="pname">Product Name:</label><br><br>
-                        <input type="text" id="pname" name="pname" placeholder="Enter Product Name" ><br><br>
+                        <input type="text" id="pname" name="pname" placeholder="Enter Product Name" ><br>
+                        <span class="error" id="nameError"></span><br><br>
 
                         <lable for="sku">Product SKU:</lable><br><br>
-                        <input type="text" id="sku" name="sku" placeholder="Enter Product SKU"><br><br>
+                        <input type="text" id="sku" name="sku" placeholder="Enter Product SKU"><br>
+                        <span class="error" id="skuError"></span><br><br>
 
-                        <lablel for="dt">Purchase Date:</lablel><br><br>
-                        <input type="date" id="dt" name="dt" required placeholder="Enter Purchase Date"><br><br>
+                        <lablel for="dt">Purchase Date:<span class="required">*</span></lablel><br><br>
+                        <input type="date" id="dt" name="dt" placeholder="Enter Purchase Date"><br>
+                        
+                        <span class="error" id="dateError"></span><br><br> 
                     </fieldset>
                     
+                    <!--PRODUCT RATING SCETION-->
                     <fieldset>
                         <legend>Product Rating:</legend>
                         <div class="product-rating">
                             <div class="product-rating-1">
                                 <div class="product-rating-1-1">
                                     <div class="product-rating-1-1-1">
-                                        <lablel for="Overall-rating">Overall Rating:</lablel>
+                                        <lablel for="Overall-rating">Overall Rating:<span class="required">*</span></lablel>
                                     </div>
                                     <div class="star-rating" id="overallRating">
                                         <span class="fa fa-star" data-value="1"></span>
                                         <span class="fa fa-star" data-value="2"></span>
                                         <span class="fa fa-star" data-value="3"></span>
                                         <span class="fa fa-star" data-value="4"></span>
-                                        <span class="fa fa-star" data-value="5"></span><br><br>
+                                        <span class="fa fa-star" data-value="5"></span><br>
                                     </div>
+                                    <span class="error" id="overallError"></span>
                                 </div>
+                                
                                 <div class="product-rating-1-1">
                                     <div class="product-rating-1-1-1">
-                                        <lablel for="Quality-rating">Quality Rating:</lablel>
+                                        <lablel for="Quality-rating">Quality Rating:<span class="required">*</span></lablel>
                                     </div>
                                     <div class="star-rating" id="qualityRating">
                                         <span class="fa fa-star"  data-value="1"></span>
                                         <span class="fa fa-star "  data-value="2"></span>
                                         <span class="fa fa-star "  data-value="3"></span>
                                         <span class="fa fa-star"  data-value="4"></span>
-                                        <span class="fa fa-star"  data-value="5"></span><br><br>
+                                        <span class="fa fa-star"  data-value="5"></span><br>
                                     </div>
+                                    <span class="error" id="qualityError"></span>
                                 </div>
-                            </div>
-                            <div class="product-rating-2">
-                                <div class="product-rating-2-2">
-                                    <div class="product-rating-2-2-2">
-                                        <lablel for="Value for money">Value for money:</lablel>
+                                <div class="product-rating-1-1">
+                                    <div class="product-rating-1-1-1">
+                                        <lablel for="Value for money">Value for money:<span class="required">*</span></lablel>
                                     </div>
                                     <div class="star-rating" id="valueFormoneyRating">
                                         <span class="fa fa-star" data-value="1"></span>
                                         <span class="fa fa-star" data-value="2" ></span>
                                         <span class="fa fa-star" data-value="3"></span>
                                         <span class="fa fa-star" data-value="4"></span>
-                                        <span class="fa fa-star" data-value="5"></span><br><br>
+                                        <span class="fa fa-star" data-value="5"></span><br>
                                     </div>
+                                    <span class="error" id="valueError"></span>
                                 </div>
+                            </div>
+
+                            <div class="product-rating-2">     
                                 <div class="product-rating-2-2">
                                     <div class="product-rating-2-2-2">
                                         <lablel for="Delivery Experience">Delivery Experience:</lablel>
@@ -82,10 +93,9 @@
                                         <span class="fa fa-star " data-value="2"></span>
                                         <span class="fa fa-star "data-value="3"></span>
                                         <span class="fa fa-star" data-value="4"></span>
-                                        <span class="fa fa-star" data-value="5"></span><br><br>
-                                    </div>
+                                        <span class="fa fa-star" data-value="5"></span><br>
+                                    </div> 
                                 </div>
-                        
                                 <div class="product-rating-2-2">
                                     <div class="product-rating-2-2-2">
                                         <lablel for="Customer Service">Customer Service:</lablel>:</lablel>
@@ -97,19 +107,24 @@
                                         <span class="fa fa-star"  data-value="4"></span>
                                         <span class="fa fa-star" data-value="5"></span><br><br>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                     </fieldset>
 
+                    <!--PRODUCT REVIEW-->
+
                     <fieldset>
                         <legend>Review:</legend>
-                            <label for="review title">Review Title:</label><br><br>
-                            <input type="text" id="review title" name="review title" min="10" max="100" required placeholder="Enter Review Title"><br><br>
+                            <label for="review-title">Review Title:<span class="required">*</span></label><br><br>
+                            <input type="text" id="review-title" name="review-title"  placeholder="Enter Review Title"><br>
+                            <span class="error" id="titleError"></span><br>
+                            
 
-                            <lable for="detailed review">Detailed Review:</lable><br><br>
-                            <textarea id="detailed review" name="detailed review" required min="30" max="1000" placeholder="Add Detailed Review"></textarea><br><br>
+                            <lable for="detailed-review">Detailed Review:<span class="required">*</span></lable><br><br>
+                            <textarea id="detailed-review" name="detailed-review" placeholder="Add Detailed Review"></textarea><br>
+                            <span class="error" id="reviewError"></span><br>
 
-                            <label for="rt">Review Type:</label><br>
+                            <label for="rt">Review Type:</label><br><br>
 
                             <input type="radio" id="reviewtype" name="reviewtype" checked>
                             <label for="reviewtype">Verified Purchase</label><br>
@@ -118,10 +133,9 @@
                             <label for="reviewtype">General Review</label><br><br>
                     </fieldset>
 
+                    <!--PRODUCT TAGS-->
                     <fieldset>
                         <legend>Product Tags</legend>
-
-
                             <input type="checkbox" id="Best quality" name="Best quality">
                             <label for="Best Quality"> Best Quality</label><br>
 
@@ -146,8 +160,11 @@
                             <input type="checkbox" id="Damaged on Arrival" name="Damaged on Arrival">
                             <label for="Damaged on Arrival">Damaged on Arrival</label><br><br>
                     </fieldset>
+
+                    <!--PRODUCT RECOMMENDATION-->
                     <fieldset>
                         <legend> Recommend This Product </legend>
+                            <lablel >Recommend This Product:<span class="required">*</span></lablel><br><br>
                             <input type="radio" id="recommendproduct" name="recommendproduct">
                             <label for="recommendproduct">Definitely Yes</label><br>
 
@@ -162,30 +179,27 @@
 
                             <input type="radio" id="recommendproduct" name="recommendproduct">
                             <label for="recommendproduct">Definitely No</label><br><br>
+                            <span class="error" id="recommendError"></span>
                     </fieldset>
 
+                    <!--TERMS AND CONDITION-->
                     <fieldset>
                         <legend>Terms:</legend>
-
-                    
                             <input type="checkbox" id="Would Buy Again" name="Would Buy Again   ">
                             <label for="Would Buy Again">Would Buy Again</label><br><br>
 
-                            <input type="checkbox" id="Make Review Public" name="Make Review Public" required>
-                            <label for="Make Review Public">Make Review Public</label><br><br>
+                            <input type="checkbox" id="Make-Review-Public" name="Make-Review-Public">
+                            <label for="Make-Review-Public">Make Review Public</label><br><br>
+                            <span class="error" id="dateError"></span>
 
-                            <input type="checkbox" id="Agree to Terms" name="Agree to Terms" required>
-                            <label for="Agree to Terms">Agree to Terms</label><br><br>
+                            <input type="checkbox" id="Agree-to-Terms" name="Agree-to-Terms" >
+                            <label for="Agree-to-Terms">Agree to Terms</label><br><br>
+                            <span class="error" id="termsError"></span>      
                     </fieldset>
-
-
-
                     <input type="submit" value="Submit">
                 </form>
             </div>
-           
         </div>
-
 <script src="js/Product-review.js"></script>
 </body>
 </html>
