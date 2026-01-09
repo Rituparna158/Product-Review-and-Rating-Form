@@ -78,18 +78,22 @@ applyStarRating("deliveryRating","delivery","deliveryError");
 applyStarRating("customerServiceRating","service","serviceErro");
 
 var productName=document.getElementById("pname");
-productName.addEventListener("keydown",function(e){
-    if(
-        e.key === "Backspace" || e.key === "Delete" || e.key === "Tab" || e.key.startsWith("Arrow")
-    ) return;
-    if(!/^[a-zA-Z]+$/.test(productName.value.trim())){
+productName.addEventListener("input",function(){
+    var val=productName.value.trim()
+    if (val === ""){
+        document.getElementById("nameError").innerText=""
+        return;
+
+    }
+   
+    if(!/^[a-zA-Z ]+$/.test(productName.value.trim())){
         document.getElementById("nameError").innerText="Only Alphabets and spaces are allowed"
     }
     else{
         document.getElementById("nameError").innerText="";
 
     }
-    
+      
 });
 
 var sku = document.getElementById("sku");
