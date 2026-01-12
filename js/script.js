@@ -86,7 +86,7 @@ productName.addEventListener("input",function(){
 
     }
    
-    if(!/^[a-zA-Z ]+$/.test(productName.value.trim())){
+    if(!/^[a-zA-Z0-9 ]+$/.test(productName.value.trim())){
         document.getElementById("nameError").innerText="Only Alphabets and spaces are allowed"
     }
     else{
@@ -176,7 +176,7 @@ function scrollToError(){
             errors[i].scrollIntoView(true)
             break;
         }
-    }
+    }   
 }
 
 //FORM SUBMIT VALIDATION
