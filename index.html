@@ -12,12 +12,14 @@
  </head>
  
 <body>
-    <div class="bg-img">
-    <div class="heading" >
-        <h2 class="main-heading">PRODUCT-REVIEW-AND-RATING</h2>
-        <h4 class="sub-heading">~We appreciate your feedback!</h4>
-    </div>  
-    <div class="main-container">
+        <div class="page-layout">
+            <div class="bg-img">
+            <div class="heading" >
+                <h2 class="main-heading">PRODUCT-REVIEW-AND-RATING</h2>
+                <h4 class="sub-heading">~We appreciate your feedback!</h4>
+            </div>  
+
+            <div class="main-container" id="formSection">
                 <form >
                     <!--PRODUCT DETAILS-->
                     <fieldset>
@@ -126,67 +128,67 @@
 
                             <label for="rt">Review Type:</label><br><br>
 
-                            <input type="radio" id="reviewtype" name="reviewtype" checked>
+                            <input type="radio" id="reviewtype" name="reviewtype" value="Verified-Purchase" checked>
                             <label for="reviewtype">Verified Purchase</label><br>
 
-                            <input type="radio" id="reviewtype" name="reviewtype">
+                            <input type="radio" id="reviewtype" name="reviewtype" value="General-Review">
                             <label for="reviewtype">General Review</label><br><br>
                     </fieldset>
 
                     <!--PRODUCT TAGS-->
                     <fieldset>
                         <legend>Product Tags</legend>
-                            <input type="checkbox" id="Best Quality" name="Best Quality">
-                            <label for="Best Quality"> Best Quality</label><br>
+                            <input type="checkbox" id="Best-Quality" name="productTags" value="Best-Quality">
+                            <label for="Best-Quality"> Best Quality</label><br>
 
-                            <input type="checkbox" id="Great Value" name="Great Value" >
-                            <label for="Great Value">Great Value</label><br>
+                            <input type="checkbox" id="Great-Value" name="productTags" value="Best-Quality" >
+                            <label for="Great-Value">Great Value</label><br>
 
-                            <input type="checkbox" id="Good Packaging" name="Good Packaging">
-                            <label for="Good Packaging">Good Packaging</label><br>
+                            <input type="checkbox" id="Good-Packaging" name="productTags" value="Good-Packaging" >
+                            <label for="Good-Packaging">Good Packaging</label><br>
 
-                            <input type="checkbox" id="Fast Delivery" name="Fast Delivery">
-                            <label for="Fast Delivery">Fast Delivery</label><br>
+                            <input type="checkbox" id="Fast-Delivery" name="productTags" value="Fast-Delivery">
+                            <label for="Fast-Delivery">Fast Delivery</label><br>
 
-                            <input type="checkbox" id="Highly Recommended" name="Highly Recommended">
-                            <label for="Highly Recommended">Highly Recommended</label><br>
+                            <input type="checkbox" id="Highly-Recommended" name="productTags" value="Highly-Recommended">
+                            <label for="Highly-Recommended">Highly Recommended</label><br>
 
-                            <input type="checkbox" id="Poor Quality" name="Poor Quality">
-                            <label for="Poor Quality">Poor Quality</label><br>
+                            <input type="checkbox" id="Poor-Quality" name="productTags" value="Poor-Quality">
+                            <label for="Poor-Quality">Poor Quality</label><br>
 
-                            <input type="checkbox" id="Not Worth Price" name="Not Worth Price">
-                            <label for="Not Worth Price">Not Worth Price</label><br>
+                            <input type="checkbox" id="Not-Worth-Price" name="productTags" value="Not-Worth-Price">
+                            <label for="Not-Worth-Price">Not Worth Price</label><br>
 
-                            <input type="checkbox" id="Damaged on Arrival" name="Damaged on Arrival">
-                            <label for="Damaged on Arrival">Damaged on Arrival</label><br><br>
+                            <input type="checkbox" id="Damaged-on-Arrival" name="productTags" value="Damaged-on-Arrival">
+                            <label for="Damaged-on-Arrival">Damaged on Arrival</label><br><br>
                     </fieldset>
 
                     <!--PRODUCT RECOMMENDATION-->
                     <fieldset>
                         <legend> Recommend This Product </legend>
                             <lablel >Recommend This Product:<span class="required">*</span></lablel><br><br>
-                            <input type="radio" id="recommendproduct" name="recommendproduct">
+                            <input type="radio" id="recommendproduct" name="recommendproduct" value="Definitely-yes">
                             <label for="recommendproduct">Definitely Yes</label><br>
 
-                            <input type="radio" id="recommendproduct" name="recommendproduct">
+                            <input type="radio" id="recommendproduct" name="recommendproduct" value="Yes">
                             <label for="recommendproduct">Yes</label><br>
 
-                            <input type="radio" id="recommendproduct" name="recommendproduct">
+                            <input type="radio" id="recommendproduct" name="recommendproduct" value="Maybe">
                             <label for="recommendproduct">Maybe</label><br>
 
-                            <input type="radio" id="recommendproduct" name="recommendproduct">
+                            <input type="radio" id="recommendproduct" name="recommendproduct" value="No">
                             <label for="recommendproduct">No</label><br>
 
-                            <input type="radio" id="recommendproduct" name="recommendproduct">
-                            <label for="recommendproduct">Definitely No</label><br><br>
+                            <input type="radio" id="recommendproduct" name="recommendproduct" value="Definitely No">
+                            <label for="recommendproduct">Definitely No:</label><br><br>
                             <span class="error" id="recommendError"></span>
                     </fieldset>
 
                     <!--TERMS AND CONDITION-->
                     <fieldset>
                         <legend>Terms:</legend>
-                            <input type="checkbox" id="Would Buy Again" name="Would Buy Again   ">
-                            <label for="Would Buy Again">Would Buy Again</label><br><br>
+                            <input type="checkbox" id="Would-Buy-Again" name="Would-Buy-Again   ">
+                            <label for="Would-Buy-Again">Would Buy Again</label><br><br>
 
                             <input type="checkbox" id="Make-Review-Public" name="Make-Review-Public">
                             <label for="Make-Review-Public">Make Review Public</label><br><br>
@@ -200,6 +202,61 @@
                 </form>
             </div>
         </div>
+            
+                <div class="table-section">
+                    <div  class="table-heading" >
+                        <h3>SUBMITTED-INFORMATION</h3>
+                    </div>
+                
+                <div class="table-container" >    
+                     <table id="recordsTable">
+                        <thead>
+                            <tr>
+                                <th colspan="3">Product Details</th>
+                                <th colspan="5">Ratings</th>
+                                <th colspan="3">Review</th>
+                                <th rowspan="2">Product Tags</th>
+                                <th colspan="1">Recommendations</th>
+                                <th colspan="3">Terms</th>
+
+                                <th rowspan="2">Actions</th>
+                                
+                            </tr>
+                            <tr>
+                                <th>Prodct Name</th>
+                                <th>Product SKU</th>
+                                <th>Purchase Date</th>
+
+                                <th>Overall </th>
+                                <th>Quality </th>
+                                <th>ValueForMoney </th>
+                                <th>Delivery </th>
+                                <th>CustomerService </th>
+
+                                <th>Reiew Title</th>
+                                <th>Detailed Review</th>
+                                <th>Review Type</th>
+                                
+
+                                <th>Recommend </th>
+                                
+
+                                <th>Would Buy Again</th> 
+                                <th>Make review Public</th>
+                                <th>Agree to terms</th>   
+
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="recordsTableBody">
+
+                        </tbody>
+
+                    </table>
+                </div> 
+        </div>
+     
+
 <script src="js/script.js"></script>
 </body>
 </html>

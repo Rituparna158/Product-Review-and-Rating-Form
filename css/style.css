@@ -1,14 +1,27 @@
-
+*{
+    box-sizing: border-box;
+}
+.page-layout{
+    display: flex;
+    gap:24px;
+    align-items: flex-start;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-x: hidden;
+}
 .heading{
     background-color:whitesmoke;
-    max-width:840px;
     border-radius: 5px;
-    margin: auto;
+    margin: 0 auto 20px;
+    margin-bottom: 20px;
+    max-width: 550px;
+
   
 }
 .main-heading{
     text-align: center;
-    padding: 0%;
+    
 }
 .sub-heading{
     text-align: center;
@@ -18,12 +31,14 @@ body{
     background-image: url('../images/bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center; 
 }
 
 .main-container{
+    flex:1;
+    min-width: 260px;
     margin: auto;
-    max-width:800px;
+    max-width: 550px;
     border-radius: 5px;
     padding: 20px;
     background-color: whitesmoke;
@@ -33,41 +48,59 @@ label{
     display:black;
     margin-top:10px;
 }
-input[type="text"]{
-    width:700px;
-    height:30px;
-}
-input[type="date"]{
-    width:700px;
-}
-
+input[type="text"],
+input[type="date"],
 textarea{
-    height:50px;
-    width: 700px;
+    width:100%;
+    height:48px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+textarea{
+    height:80px;
+    
+    resize: vertical;
+}
+input:focus,
+textarea:focus{
+    border: 2px solid #000;
+    outline: none;
 }
 .fa-star{
-    font-size: 25px;
+    font-size: 22px;
     cursor: pointer;
     color: gray;
 }
 .fa-star.active{
     color: orange;
 }
+.star-rating{
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+}
 fieldset{
     padding:20px;
     border-radius: 5px;
-    min-width: 0;
-    box-sizing: border-box;
+    margin-bottom: 24px;
+}
+legend{
+    text-align: center;
+    font-weight: bold;
 }
 input[type="submit"]{
     background: black;
     color:white;
-    padding:10px;
+    padding:12px;
     border:none;
     cursor: pointer;
     width:100%;
-    margin-top:10px ;
+    margin-top:20px ;
     border-radius: 5px;
+    font-size: 16px;
 }
 input[type="submit"]:hover{
     background: #444;;
@@ -76,116 +109,200 @@ input[type="submit"]:hover{
     display:flex;
     
 }
-legend{
-    text-align: center;
-}
-.table{
-    margin: auto;
-    text-align: center;
-    background-color: whitesmoke;
-   
-}
 .product-rating{
     display: flex;
     flex-direction: column;
     gap: 32px;
+    margin: -15px;
     
 }
-.product-rating-1{
-    display: flex;
-    gap: 32px;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    
-}
+.product-rating-1,
 .product-rating-2{
-     display: flex;
+    display: flex;
     gap: 32px;
     justify-content: space-between;
     flex-wrap: wrap;
-}
-.star-rating{
-    display: flex;
-    gap: 6px;
-    margin-top: 6px;
+    
 }
 .product-rating-1-1, .product-rating-2-2{
     display: flex;
     min-width: 260px; 
     flex-direction: column;
 }
-.product-rating-1-1-1 , .product-rating-2-2-2{
-    margin-bottom: 10px;
-}
+
 .error{
     color: red;
     font-size: 14px;
     display: block;
     pointer-events: none;
+    margin-top: 4px;
 }
 .required{
     color: red;
     margin-left: 4px;
     font-weight: bold;
 }
+.table-section{
+    flex-direction: column;
+    flex: 1;
+    display: flex;
+    min-width: 0;
+    width: 100%;
+    margin  : 20px;
+    
+}
+.table-container{
+    margin-top: 30px;
+    width: 100%;
+    min-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 1px solid #ddd;
+    background: #fff;   
+}
+.table-heading{
+    text-align: center;
+    padding-bottom: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: whitesmoke;
+    border-bottom: none;
+
+}
+#recordsTable{
+ 
+    min-width: 1600px;
+    width: max-content;
+    
+}
+#recordsTable th,
+#recordsTable td{
+    padding:12px 16px;
+    border: 1px solid #ddd;
+    text-align: center;
+    white-space: nowrap;      
+}
+#recordsTable th{
+    background-color: #f3f3f3;
+    font-weight: 600;
+}
+#recordsTable tbody tr:nth-child(even){
+    background-color: #fafafa;
+}
+#recordsTable td:last-child{
+    display: flex;
+    gap: 6px;
+}
+#recordsTable tbody tr:hover{
+    background-color: #f0f7ff;
+}
+
+#recordsTable button{
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin:2px
+
+}
+#recordsTable button:first-child{
+    background-color: #007bff;
+    color: #fff;
+}
+#recordsTable button:last-child{
+    background-color: #dc35dc;
+    color: #fff;
+}
 @media (max-width:992px){
+    .page-layout{
+        flex-direction: column;
+        align-items: stretch;
+    }
     .main-container{
-        width: 95%;
-        padding:15px;
+        width: 100%;
+        max-width: 100%;
     }
-
-    input[type="text"],
-    input[type="date"],
-    textarea{
-        width:100%;
+    .table-section{
+        overflow: hidden;
     }
-
+    .heading{
+        max-width: 100%;
+    }
     .product-rating-1,
     .product-rating-2{
         flex-direction: column;
-        gap:24px;
-        align-items: flex-start;
+        gap: 24px;
     }
-
     .product-rating-1-1,
     .product-rating-2-2{
         width: 100%;
-        
-    }
-
-    .star-rating{
-        margin-top: 5px;
     }
 }
 
 @media (max-width:600px){
-    body{
-        background-attachment: scroll;
+    .page-layout{
+        padding: 12px;
+        gap: 16px;
+    }
+    .main-container{
+        padding: 16px;
     }
     .main-heading{
         font-size: 20px;
     }
     .sub-heading{
-        font-size: 16px;
-    }
-    fieldset{
-        margin: 10px;
-        padding: 12px;
+        font-size: 15px;
     }
     label{
         font-size: 14px;
     }
+    input[type="text"],
+    input[type="date"],
+    textarea{
+        font-size: 16px;
+        height: 44px;
+    }
+    textarea{
+        height: 100px;
+    }
     .fa-star{
         font-size: 20px;
     }
-    .product-rating{
-        gap:24px;
+    .star-rating{
+        gap:4px
     }
+    .product-rating-1,
+    .product-rating-2{
+        gap:16px
+    }
+    .product-rating-1-1,
+    .product-rating-2-2{
+        min-width: 100%;
+    }
+   
     input[type="submit"]{
         font-size: 16px;
-        padding: 12px;
+        padding: 14px;
     }
+    .table-heading h3 {
+        font-size: 16px;
+    }
+    #recordsTable{
+        font-size: 13px;
+    }
+    #recordsTable th,
+    #recordsTable td{
+        padding: 8px 10px;
+    }
+    #recordsTable button{
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+
 }
+
+
 
 
 

@@ -38,7 +38,11 @@ function applyStarRating(containerId,ratingName,errorId){
                 customerServiceRating=i+1;
 
             }
-            errorSpan.innerText="";
+            if(errorSpan){
+                errorSpan.innerHTML="";
+
+            }
+            
         };
         stars[i].onmouseout=function(){
             resetStars(stars);
@@ -86,7 +90,7 @@ productName.addEventListener("input",function(){
 
     }
    
-    if(!/^[a-zA-Z0-9 ]+$/.test(productName.value.trim())){
+    if(!/^[a-zA-Z0-92 ]+$/.test(productName.value.trim())){
         document.getElementById("nameError").innerText="Only Alphabets and spaces are allowed"
     }
     else{
@@ -155,6 +159,7 @@ recommendprod.forEach(function(radio){
 var makeReviewPublic=document.getElementById("Make-Review-Public");
 var agreeTerms=document.getElementById("Agree-to-Terms");
 var termsError=document.getElementById("termsError")
+var wouldBuyAgain=document.getElementById("Would-Buy-Again")
 
 makeReviewPublic.onchange=function(){
     if(makeReviewPublic.checked && agreeTerms.checked){
@@ -180,7 +185,18 @@ function scrollToError(){
 }
 
 //FORM SUBMIT VALIDATION
+var records=[];
+var editid=-1;
+
+var tableBody = document.getElementById("recordsTableBody");
+var submitBtn=document.querySelector('input[type="submit"]');
+
 var form=document.querySelector("form");
+
+function stars(count){
+    return "★".repeat(count)+"☆".repeat(5-count);
+}
+
 form.onsubmit=function(e){
     e.preventDefault();
     var valid=true;
@@ -232,26 +248,178 @@ form.onsubmit=function(e){
         document.getElementById("termsError").innerText="";
     }
 
+    var selectedTags=[];
+    document.querySelectorAll('input[name="productTags"]:checked').forEach(function(tag){
+        selectedTags.push(tag.value)
+    });
+
     // IF VALIDATION FAILS , SCROLL TO ERROR
     if(!valid){
         scrollToError();
         return false;
     }
-        // I ALL VALIDATION PASS
-        alert("Form Submitted sucessfully!")
-        form.reset();
 
-        overallRating=0;
-        qualityRating=0;
-        valueFormoneyRating=0;
-        deliveryRating=0;
-        customerServiceRating=0;
+    var record={
+        pname:productName.value,
+        sku:sku.value,
+        date:purchaseDate.value,
 
-        document.querySelectorAll(".fa-star").forEach(function(star){
-            star.classList.remove("active");
-        });
-    
-    
-    return false;
+        overall:overallRating,
+        quality:qualityRating,
+        value:valueFormoneyRating,
+        delivery:deliveryRating,
+        service:customerServiceRating,
+
+        title:reviewTitle.value,
+        detailreview:detailedReview.value,
+        type:document.querySelector('input[name="reviewtype"]:checked')?.value || "",
+        tags:selectedTags,
+        recommend:document.querySelector('input[name="recommendproduct"]:checked')?.value || "" ,
+        buyAgain:wouldBuyAgain.checked? "Yes" : "No",
+        public:makeReviewPublic.checked? "Yes" : "No",
+        agree:agreeTerms.checked? "Yes" : "No"
+    };
+
+    if(editid===-1){
+        records.push(record);
+    }
+    else{
+        records[editid]=record;
+        editid=-1;
+        form.querySelector('input[type="submit"]').value="Submit"
+
+    }
+    renderTable()
+    resetForm()
 };
+
+
+function renderTable(){
+    tableBody.innerHTML="";
+    records.forEach(function(rec,index){
+        var row = tableBody.insertRow();
+
+        row.insertCell().innerText=rec.pname;
+        row.insertCell().innerText=rec.sku;
+        row.insertCell().innerText=rec.date;
+
+        
+        row.insertCell().innerText="★".repeat(rec.overall);
+        row.insertCell().innerText="★".repeat(rec.quality)
+        row.insertCell().innerText="★".repeat(rec.value)
+        row.insertCell().innerText=rec.delivery?"★".repeat(rec.service):"-";
+        row.insertCell().innerText=rec.delivery?"★".repeat(rec.service):"-";
+
+
+        row.insertCell().innerText=rec.title;
+        row.insertCell().innerText=rec.detailreview;
+        row.insertCell().innerText=rec.type;
+        row.insertCell().innerText=Array.isArray(rec.tags)? rec.tags.join(", "):"";
+        row.insertCell().innerText=rec.recommend;
+        row.insertCell().innerText=rec.buyAgain;
+        row.insertCell().innerText=rec.public;
+        row.insertCell().innerText=rec.agree;
+
+        var actionCell=row.insertCell();
+
+        var editBtn=document.createElement("button");
+        editBtn.innerText="Edit";
+        editBtn.onclick=function(){
+            editRecord(index);
+        };
+        
+        var deleteBtn=document.createElement("button");
+        deleteBtn.innerText="Delete";
+        deleteBtn.onclick=function(){
+            if(confirm("Are you sure you want to delete this record?")){
+                records.splice(index,1);
+                renderTable();
+            }
+        };
+        actionCell.appendChild(editBtn)
+        actionCell.appendChild(deleteBtn)
+
+    });
+}
+
+function editRecord(index){
+    editid=index;
+    var rec=records[index];
+    
+    document.getElementById("pname").value=rec.pname;
+    document.getElementById("sku").value=rec.sku;
+    document.getElementById("dt").value=rec.date;
+    document.getElementById("review-title").value=rec.title;
+    document.getElementById("detailed-review").value=rec.detailreview;
+
+    overallRating=rec.overall;
+    qualityRating=rec.quality;
+    valueFormoneyRating=rec.value;
+    deliveryRating=rec.delivery;
+    customerServiceRating=rec.service;
+
+    document.querySelectorAll(".fa-star").forEach(star=>{
+       star.classList.remove("active");
+    });
+
+
+    fillStars("overallRating",overallRating);
+    fillStars("qualityRating",qualityRating);
+    fillStars("valueFormoneyRating",valueFormoneyRating);
+    fillStars("deliveryRating",deliveryRating);
+    fillStars("customerServiceRating",customerServiceRating);
+
+
+    document.querySelectorAll('input[name="reviewtype"]').forEach(radio=> {
+        radio.checked=radio.value===rec.type;
+
+    });
+
+    document.querySelectorAll('input[name="productTags"]').forEach(function(checkbox){
+        checkbox.checked=Array.isArray(rec.tags)? rec.tags.includes(checkbox.value):false
+
+    });
+
+
+    document.querySelectorAll('input[name="recommendproduct"]').forEach(radio=>{
+        radio.checked=radio.value===rec.recommend;
+    });
+
+    document.getElementById("Would-Buy-Again").checked=rec.buyAgain==="Yes";
+    document.getElementById("Make-Review-Public").checked=rec.public==="Yes";
+    document.getElementById("Agree-to-Terms").checked=rec.agree==="Yes";
+
+    document.querySelector('input[type="submit"]').value="Update";
+
+    document.getElementById("formSection").scrollIntoView();
+
+
+}
+
+  function fillStars(containerId,count){
+        var stars = document.querySelectorAll("#"+ containerId+ " .fa-star");
+        for(let i=0;i<count;i++){
+            stars[i].classList.add("active")
+        }
+    }
+
+
+function resetForm(){
+    form.reset()
+    overallRating=0;
+    qualityRating=0;
+    valueFormoneyRating=0;
+    deliveryRating=0;
+    customerServiceRating=0;
+
+    editid=-1;
+
+    document.querySelectorAll('input[name="productTags"]').forEach(function(checkbox){
+        checkbox.checked=false;
+    })
+
+    document.querySelectorAll(".fa-star").forEach(function(star){
+        star.classList.remove("active");
+         });
+}   
 
