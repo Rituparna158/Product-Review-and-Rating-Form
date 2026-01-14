@@ -283,15 +283,18 @@ form.onsubmit=function(e){
 
     if(editid===-1){
         records.push(record);
+        showSuccess("Form submitted successfully");
     }
     else{
         records[editid]=record;
+        showSuccess("Form updated successfully")
         editid=-1;
         form.querySelector('input[type="submit"]').value="Submit"
+        
 
     }
-    alert("Form submitted successfully")
-    showSuccess("Form submitted successfully");
+    
+    
     renderTable()
     resetForm()
 };
@@ -329,21 +332,23 @@ function renderTable(){
         editBtn.innerText="Edit";
         editBtn.onclick=function(){
             editRecord(index);
+            
+
         };
         
         var deleteBtn=document.createElement("button");
         deleteBtn.innerText="Delete";
         deleteBtn.onclick=function(){
-            if(confirm("Are you sure you want to delete this record?")){
-                records.splice(index,1);
-                renderTable();
+            showDelete(index);
             }
-        };
+        
         actionCell.appendChild(editBtn)
         actionCell.appendChild(deleteBtn)
 
     });
 }
+
+
 
 function editRecord(index){
     editid=index;
@@ -392,8 +397,9 @@ function editRecord(index){
     document.getElementById("Make-Review-Public").checked=rec.public==="Yes";
     document.getElementById("Agree-to-Terms").checked=rec.agree==="Yes";
 
-    document.querySelector('input[type="submit"]').value="Update";
+    
 
+    document.querySelector('input[type="submit"]').value="Update";
     document.getElementById("formSection").scrollIntoView();
 
 
@@ -426,15 +432,51 @@ function resetForm(){
          });
 }   
 
+var successDialog=document.getElementById("successDialog");
+var dialogMessage=document.getElementById("dialogMessage");
+var okbtn = document.getElementById("okbutton")
+
 function showSuccess(msg){
-    var box=document.getElementById("submitMessage");
-    var text=document.getElementById("successText");
 
-    text.innerText=msg;
-    box.style.display="block";
-
-    setTimeout(function(){
-        box.style.display="none"
-    },2500);
+    dialogMessage.innerText=msg;
+    successDialog.showModal();
 }
+
+    okbtn.onclick=function(){
+        successDialog.close();
+    };
+
+var deleteDialog=document.getElementById("deleteDialog");
+var dialogdeleteMessage=document.getElementById("dialogdeleteMessage");
+var yesbtn=document.getElementById("yesbutton");
+var nobtn=document.getElementById("nobutton");
+
+var deleteIndex=-1
+
+function showDelete(index){
+    deleteIndex=index
+    dialogdeleteMessage.innerText="Are you sure you want to delete this record?";
+    deleteDialog.showModal();
+
+}
+
+yesbtn.onclick=function(){
+    if(deleteIndex!=-1){
+        records.splice(deleteIndex,1);
+        renderTable();
+
+    }
+        
+        deleteDialog.close();
+    };
+
+nobtn.onclick=function(){
+    deleteIndex=-1
+        deleteDialog.close();
+    };
+    
+    
+    
+
+
 

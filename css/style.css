@@ -152,7 +152,7 @@ input[type="submit"]:hover{
     
 }
 .table-container{
-    margin-top: 30px;
+    margin-top: 20px;
     width: 100%;
     min-width: 100%;
     overflow-x: auto;
@@ -214,19 +214,46 @@ input[type="submit"]:hover{
     background-color: #dc35dc;
     color: #fff;
 }
-.popup{
-    position:fixed;
-    top:20px;
-    right: 20px;
-    padding: 4px 20px;
-    border-radius: 6px;
-    font-size: 14px;
+
+.sucess-popup{
+    position: fixed;
+    inset:0;
+    background-color: rgba(0,0,0,0.4);
     display: none;
+    align-items: center;
+    justify-content: center;
     z-index: 9999;
 }
-.popup-success{
-    background:#28a745;
-    color:#fff
+.popup-box{
+    background:#fff;
+    padding: 28px 40px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 300px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    
+}
+.popup-box p{
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+.pop-box button{
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+dialog{
+    padding: 24px;
+    border-radius: 8px;
+    border: none;
+    width: 320px;
+    text-align: center;
+}
+dialog::backdrop{
+    background: rgba(0,0,0,0.5);
 }
 
 @media (max-width:992px){
@@ -299,6 +326,9 @@ input[type="submit"]:hover{
     input[type="submit"]{
         font-size: 16px;
         padding: 14px;
+    }
+    .table-container{
+        margin: 0px;
     }
     .table-heading h3 {
         font-size: 16px;
