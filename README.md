@@ -13,7 +13,7 @@ This Project is a product review and rating form built using HTML , CSS  and Jav
 ### Technologies used:
 1.HTML<br>
 2.CSS<br>
-3.JavaScript es6<br>
+3.JavaScript es6 new feture<br>
 
 ### How to Run the project locally:
 1.Open the project folder in VS code.<br>
