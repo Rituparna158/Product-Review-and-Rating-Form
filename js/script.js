@@ -70,6 +70,7 @@ function applyStarRating(containerId,ratingName,errorId){
         };
     }
 }
+
 function resetStars(stars){
     for(let i=0;i<stars.length;i++){
         stars[i].classList.remove("active")
@@ -289,6 +290,8 @@ form.onsubmit=function(e){
         form.querySelector('input[type="submit"]').value="Submit"
 
     }
+    alert("Form submitted successfully")
+    showSuccess("Form submitted successfully");
     renderTable()
     resetForm()
 };
@@ -422,4 +425,16 @@ function resetForm(){
         star.classList.remove("active");
          });
 }   
+
+function showSuccess(msg){
+    var box=document.getElementById("submitMessage");
+    var text=document.getElementById("successText");
+
+    text.innerText=msg;
+    box.style.display="block";
+
+    setTimeout(function(){
+        box.style.display="none"
+    },2500);
+}
 

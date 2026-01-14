@@ -33,7 +33,7 @@
                         <span class="error" id="skuError"></span><br><br>
 
                         <lablel for="dt">Purchase Date:<span class="required">*</span></lablel><br><br>
-                        <input type="date" id="dt" name="dt" placeholder="Enter Purchase Date"><br>
+                        <input type="date" id="dt" name="dt" placeholder="Enter Purchase Date" max=""><br>
                         
                         <span class="error" id="dateError"></span><br><br> 
                     </fieldset>
@@ -255,6 +255,11 @@
                     </table>
                 </div> 
         </div>
+
+        <div id="submitMessage" class="popup-success">
+            <span id="successText"></span>
+        </div>
+        
      
 
 <script src="js/script.js"></script>
