@@ -1,0 +1,381 @@
+let overallRating = 0;
+let qualityRating = 0;
+let valueFormoneyRating = 0;
+let deliveryRating = 0;
+let customerServiceRating = 0;
+let records = [];
+let editid = -1;
+// STAR RATING VALIDATION
+function applyStarRating(containerId, ratingName, errorId) {
+    const stars = document.querySelectorAll("#" + containerId + " .fa-star");
+    const errorSpan = document.getElementById(errorId);
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].onmouseover = function () {
+            resetStars(stars);
+            for (let j = 0; j <= i; j++) {
+                const hoverStar = stars[j];
+                if (hoverStar) {
+                    hoverStar.classList.add("active");
+                }
+            }
+        };
+        stars[i].onclick = function () {
+            if (ratingName === "overall") {
+                overallRating = i + 1;
+            }
+            if (ratingName === "quality") {
+                qualityRating = i + 1;
+            }
+            if (ratingName === "value") {
+                valueFormoneyRating = i + 1;
+            }
+            if (ratingName === "delivery") {
+                deliveryRating = i + 1;
+            }
+            if (ratingName === "service") {
+                customerServiceRating = i + 1;
+            }
+            if (errorSpan) {
+                errorSpan.innerHTML = "";
+            }
+        };
+        stars[i].onmouseout = function () {
+            resetStars(stars);
+            let ratingValue = 0;
+            if (ratingName === "overall") {
+                ratingValue = overallRating;
+            }
+            if (ratingName === "quality") {
+                ratingValue = qualityRating;
+            }
+            if (ratingName === "value") {
+                ratingValue = valueFormoneyRating;
+            }
+            if (ratingName === "delivery") {
+                ratingValue = deliveryRating;
+            }
+            if (ratingName === "service") {
+                ratingValue = customerServiceRating;
+            }
+            for (let j = 0; j < ratingValue; j++) {
+                stars[j].classList.add("active");
+            }
+        };
+    }
+}
+function resetStars(stars) {
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].classList.remove("active");
+    }
+}
+applyStarRating("overallRating", "overall", "overallError");
+applyStarRating("qualityRating", "quality", "qualityError");
+applyStarRating("valueFormoneyRating", "value", "valueError");
+applyStarRating("deliveryRating", "delivery", "deliveryError");
+applyStarRating("customerServiceRating", "service", "serviceErro");
+var submitBtn = document.querySelector('input[type="submit"]');
+const form = document.querySelector("form");
+const productName = document.getElementById("pname");
+const sku = document.getElementById("sku");
+const purchaseDate = document.getElementById("dt");
+const reviewTitle = document.getElementById("review-title");
+const detailedReview = document.getElementById("detailed-review");
+const recommendprod = document.querySelectorAll('input[name="recommendproduct"]');
+const makeReviewPublic = document.getElementById("Make-Review-Public");
+const agreeTerms = document.getElementById("Agree-to-Terms");
+const wouldBuyAgain = document.getElementById("Would-Buy-Again");
+const nameError = document.getElementById("nameError");
+const skuError = document.getElementById("skuError");
+const dateError = document.getElementById("dateError");
+const titleError = document.getElementById("titleError");
+const reviewError = document.getElementById("reviewError");
+const recommendError = document.getElementById("recommendError");
+const termsError = document.getElementById("termsError");
+productName.addEventListener("input", () => {
+    const val = productName.value.trim();
+    if (val === "") {
+        nameError.innerText = "";
+        return;
+    }
+    if (!/^[a-zA-Z0-92 ]+$/.test(val)) {
+        nameError.innerText = "Only Alphabets and spaces are allowed";
+    }
+    else {
+        nameError.innerText = "";
+    }
+});
+sku.addEventListener("input", () => {
+    if (!/^[a-zA-Z0-9]*$/.test(sku.value)) {
+        skuError.innerText = "only letters and numbers are allowed";
+    }
+    else {
+        skuError.innerText = "";
+    }
+});
+purchaseDate.addEventListener("blur", () => {
+    if (purchaseDate.value === "") {
+        dateError.innerText = "Purchase date is required";
+    }
+}, true);
+purchaseDate.addEventListener("input", () => {
+    dateError.innerText = "";
+});
+reviewTitle.addEventListener("blur", () => {
+    if (reviewTitle.value.length < 10 || reviewTitle.value.length > 100) {
+        titleError.innerText = " Title must be in between 10 to 100 characters ";
+    }
+}, true);
+reviewTitle.addEventListener("input", () => {
+    if (reviewTitle.value.length >= 10 && reviewTitle.value.length <= 100) {
+        titleError.innerText = "";
+    }
+});
+detailedReview.addEventListener("blur", () => {
+    if (detailedReview.value.length < 30 || detailedReview.value.length > 1000) {
+        reviewError.innerText = "Review must be in between 30 to 1000 characters";
+    }
+}, true);
+detailedReview.addEventListener("input", function () {
+    if (detailedReview.value.length >= 30 && detailedReview.value.length <= 1000) {
+        reviewError.innerText = "";
+    }
+});
+recommendprod.forEach((radio) => {
+    radio.addEventListener("change", () => {
+        recommendError.innerText = "";
+    });
+});
+makeReviewPublic.onchange = function () {
+    if (makeReviewPublic.checked && agreeTerms.checked) {
+        const er = document.getElementById("termsError");
+        if (er)
+            er.innerText = "";
+    }
+};
+agreeTerms.onchange = function () {
+    if (makeReviewPublic.checked && agreeTerms.checked) {
+        const er = document.getElementById("termsError");
+        if (er)
+            er.innerText = "";
+    }
+};
+//SCROLLS PAGE TO THE FIRST VISIBLE ERROR
+function scrollToError() {
+    var errors = document.getElementsByClassName("error");
+    for (let i = 0; i < errors.length; i++) {
+        if (errors[i].innerHTML != "") {
+            errors[i].scrollIntoView(true);
+            break;
+        }
+    }
+}
+form.onsubmit = function (e) {
+    e.preventDefault();
+    let valid = true;
+    const reviewType = document.querySelector('input[name="reviewtype"]:checked');
+    const recommendE = document.querySelector('input[name="recommendproduct"]:checked');
+    const selectedTags = [];
+    document.querySelectorAll('input[name="productTags"]:checked').forEach((tag) => {
+        selectedTags.push(tag.value);
+    });
+    if (purchaseDate.value === "") {
+        document.getElementById("dateError").innerText = "Purchase Date is required";
+        valid = false;
+    }
+    if (overallRating === 0) {
+        document.getElementById("overallError").innerText = "Overall Rating is required";
+        valid = false;
+    }
+    if (qualityRating === 0) {
+        document.getElementById("qualityError").innerText = "Quality Rating is required";
+        valid = false;
+    }
+    if (valueFormoneyRating === 0) {
+        document.getElementById("valueError").innerText = "ValueForMoney Rating is required";
+        valid = false;
+    }
+    if (reviewTitle.value.length < 10 || reviewTitle.value.length > 100) {
+        document.getElementById("titleError").innerText = "Title must be 10-100 characters";
+        valid = false;
+    }
+    if (detailedReview.value.length < 30 || detailedReview.value.length > 1000) {
+        document.getElementById("reviewError").innerText = "Review must be 30-1000 characters";
+        valid = false;
+    }
+    const recommendRadio = document.querySelector('input[name="recommendproduct"]:checked');
+    if (!recommendRadio) {
+        document.getElementById("recommendError").innerText = "Please select an option";
+        valid = false;
+    }
+    if (!(makeReviewPublic.checked && agreeTerms.checked)) {
+        document.getElementById("termsError").innerText = "Please accept rquired terms";
+        valid = false;
+    }
+    else {
+        document.getElementById("termsError").innerText = "";
+    }
+    if (!valid) {
+        scrollToError();
+        return false;
+    }
+    const record = {
+        pname: productName.value,
+        sku: sku.value,
+        date: purchaseDate.value,
+        overall: overallRating,
+        quality: qualityRating,
+        value: valueFormoneyRating,
+        delivery: deliveryRating,
+        service: customerServiceRating,
+        title: reviewTitle.value,
+        detailreview: detailedReview.value,
+        type: reviewType ? reviewType.value : "",
+        tags: selectedTags,
+        recommend: recommendE ? recommendE.value : "",
+        buyAgain: wouldBuyAgain.checked ? "Yes" : "No",
+        public: makeReviewPublic.checked ? "Yes" : "No",
+        agree: agreeTerms.checked ? "Yes" : "No"
+    };
+    if (editid === -1) {
+        records.push(record);
+        showSuccess("Form submitted successfully");
+    }
+    else {
+        records[editid] = record;
+        showSuccess("Form updated successfully");
+        editid = -1;
+        form.querySelector('input[type="submit"]').value = "Submit";
+    }
+    renderTable();
+    resetForm();
+    return false;
+};
+function renderTable() {
+    const tableBody = document.getElementById("recordsTableBody");
+    tableBody.innerHTML = "";
+    records.forEach((rec, index) => {
+        const row = tableBody.insertRow();
+        row.insertCell().innerText = rec.pname;
+        row.insertCell().innerText = rec.sku;
+        row.insertCell().innerText = rec.date;
+        row.insertCell().innerText = "★".repeat(rec.overall);
+        row.insertCell().innerText = "★".repeat(rec.quality);
+        row.insertCell().innerText = "★".repeat(rec.value);
+        row.insertCell().innerText = rec.delivery ? "★".repeat(rec.delivery) : "-";
+        row.insertCell().innerText = rec.delivery ? "★".repeat(rec.service) : "-";
+        row.insertCell().innerText = rec.title;
+        row.insertCell().innerText = rec.detailreview;
+        row.insertCell().innerText = rec.type;
+        row.insertCell().innerText = Array.isArray(rec.tags) ? rec.tags.join(", ") : "";
+        row.insertCell().innerText = rec.recommend;
+        row.insertCell().innerText = rec.buyAgain;
+        row.insertCell().innerText = rec.public;
+        row.insertCell().innerText = rec.agree;
+        const actionCell = row.insertCell();
+        const editBtn = document.createElement("button");
+        editBtn.innerText = "Edit";
+        editBtn.onclick = () => editRecord(index);
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "Delete";
+        deleteBtn.onclick = () => showDelete(index);
+        actionCell.appendChild(editBtn);
+        actionCell.appendChild(deleteBtn);
+    });
+}
+function editRecord(index) {
+    const rec = records[index];
+    editid = index;
+    productName.value = rec.pname;
+    sku.value = rec.sku;
+    purchaseDate.value = rec.date;
+    reviewTitle.value = rec.title;
+    detailedReview.value = rec.detailreview;
+    overallRating = rec.overall;
+    qualityRating = rec.quality;
+    valueFormoneyRating = rec.value;
+    deliveryRating = rec.delivery;
+    customerServiceRating = rec.service;
+    document.querySelectorAll(".fa-star").forEach(star => {
+        star.classList.remove("active");
+    });
+    fillStars("overallRating", overallRating);
+    fillStars("qualityRating", qualityRating);
+    fillStars("valueFormoneyRating", valueFormoneyRating);
+    fillStars("deliveryRating", deliveryRating);
+    fillStars("customerServiceRating", customerServiceRating);
+    document.querySelectorAll('input[name="reviewtype"]').forEach((radio) => {
+        const r = radio;
+        r.checked = r.value === rec.type;
+    });
+    document.querySelectorAll('input[name="productTags"]').forEach((checkbox) => {
+        const cb = checkbox;
+        cb.checked = rec.tags.includes(cb.value);
+    });
+    document.querySelectorAll('input[name="recommendproduct"]').forEach((radio) => {
+        const r = radio;
+        r.checked = r.value === rec.recommend;
+    });
+    document.getElementById("Would-Buy-Again").checked = rec.buyAgain === "Yes";
+    document.getElementById("Make-Review-Public").checked = rec.public === "Yes";
+    document.getElementById("Agree-to-Terms").checked = rec.agree === "Yes";
+    document.querySelector('input[type="submit"]').value = "Update";
+    document.getElementById("formSection")?.scrollIntoView({
+        behavior: "smooth"
+    });
+}
+function fillStars(containerId, count) {
+    const stars = document.querySelectorAll("#" + containerId + " .fa-star");
+    for (let i = 0; i < count; i++) {
+        stars[i].classList.add("active");
+    }
+}
+function resetForm() {
+    form.reset();
+    overallRating = 0;
+    qualityRating = 0;
+    valueFormoneyRating = 0;
+    deliveryRating = 0;
+    customerServiceRating = 0;
+    editid = -1;
+    document.querySelectorAll('input[name="productTags"]').forEach((checkbox) => {
+        const cb = checkbox;
+        cb.checked = false;
+    });
+    document.querySelectorAll(".fa-star").forEach(function (star) {
+        star.classList.remove("active");
+    });
+}
+const successDialog = document.getElementById("successDialog");
+const dialogMessage = document.getElementById("dialogMessage");
+const okbtn = document.getElementById("okbutton");
+function showSuccess(msg) {
+    dialogMessage.innerText = msg;
+    successDialog.showModal();
+}
+okbtn.onclick = function () {
+    successDialog.close();
+};
+const deleteDialog = document.getElementById("deleteDialog");
+const dialogdeleteMessage = document.getElementById("dialogdeleteMessage");
+const yesbtn = document.getElementById("yesbutton");
+const nobtn = document.getElementById("nobutton");
+let deleteIndex = -1;
+function showDelete(index) {
+    deleteIndex = index;
+    dialogdeleteMessage.innerText = "Are you sure you want to delete this record?";
+    deleteDialog.showModal();
+}
+yesbtn.onclick = () => {
+    if (deleteIndex != -1) {
+        records.splice(deleteIndex, 1);
+        renderTable();
+        deleteIndex = -1;
+    }
+    deleteDialog.close();
+};
+nobtn.onclick = () => {
+    deleteIndex = -1;
+    deleteDialog.close();
+};
+export {};
+//# sourceMappingURL=script.js.map
