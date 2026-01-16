@@ -178,6 +178,14 @@ form.onsubmit = function (e) {
     document.querySelectorAll('input[name="productTags"]:checked').forEach((tag) => {
         selectedTags.push(tag.value);
     });
+    if (productName.value === "") {
+        document.getElementById('nameError').innerText = "Name is required";
+        valid = false;
+    }
+    if (sku.value === "") {
+        document.getElementById("skuError").innerText = "Product sku is required";
+        valid = false;
+    }
     if (purchaseDate.value === "") {
         document.getElementById("dateError").innerText = "Purchase Date is required";
         valid = false;
