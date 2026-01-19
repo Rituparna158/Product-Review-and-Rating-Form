@@ -1,81 +1,81 @@
 *{
     box-sizing: border-box;
+    font-family: "Segoe UI",Roboto , Arial,sans-serif;
+}
+body{
+    
+    margin: 0;
+    background: linear-gradient(135deg,#eef2f7,#dfe7f1);
 }
 .page-layout{
     display: flex;
     gap:24px;
     align-items: flex-start;
     max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-    overflow-x: hidden;
+    margin: auto;
+    padding: 24px;
+    
 }
 .heading{
-    background-color:whitesmoke;
-    border-radius: 5px;
-    margin: 0 auto 20px;
-    margin-bottom: 20px;
-    max-width: 550px;
-
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    background: #fff;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
   
 }
 .main-heading{
-    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
     
 }
 .sub-heading{
-    text-align: center;
-}
-
-body{
-    background-image: url('../images/bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center; 
+    color: #555;
 }
 
 .main-container{
     flex:1;
-    min-width: 260px;
-    margin: auto;
-    max-width: 550px;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: whitesmoke;
+    max-width: 520px;
+    border-radius: 14px;
+    padding: 24px;
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
 label{
-    display:black;
-    margin-top:10px;
+    font-weight: 500;
+    margin-top:  14px;
 }
 input[type="text"],
 input[type="date"],
 textarea{
     width:100%;
-    height:48px;
     padding: 12px;
-    font-size: 16px;
-    border-radius: 6px;
+    font-size: 15px;
+    border-radius: 8px;
     border: 1px solid #ccc;
-    box-sizing: border-box;
+
 }
 textarea{
-    height:80px;
-    
+    min-height:90px;
     resize: vertical;
 }
+
 input:focus,
 textarea:focus{
-    border: 2px solid #000;
+    border-color: #007bff;
     outline: none;
 }
+
 .fa-star{
     font-size: 22px;
     cursor: pointer;
-    color: gray;
+    color: #ccc;
 }
 .fa-star.active{
-    color: orange;
+    color: #f5a623;
 }
 .star-rating{
     display: flex;
@@ -92,18 +92,18 @@ legend{
     font-weight: bold;
 }
 input[type="submit"]{
-    background: black;
+    background: #007bff;
     color:white;
-    padding:12px;
+    padding:14px;
     border:none;
     cursor: pointer;
     width:100%;
     margin-top:20px ;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
 }
 input[type="submit"]:hover{
-    background: #444;;
+    background: #0056b3;
 }
 .product-details{
     display:flex;
@@ -131,50 +131,45 @@ input[type="submit"]:hover{
 }
 
 .error{
-    color: red;
-    font-size: 14px;
-    display: block;
-    pointer-events: none;
+    color: #d93025;
+    font-size: 13px;
     margin-top: 4px;
 }
 .required{
     color: red;
     margin-left: 4px;
-    font-weight: bold;
 }
 .table-section{
     flex-direction: column;
-    flex: 1;
+    flex: 2;
     display: flex;
-    min-width: 0;
-    width: 100%;
-    margin  : 20px;
-    
+    gap:12px; 
+    width: 50px; 
+  
 }
 .table-container{
-    margin-top: 20px;
-    width: 100%;
-    min-width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
-    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
     background: #fff;   
 }
 .table-heading{
     text-align: center;
-    padding-bottom: 8px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
     border: 1px solid #ddd;
-    background-color: whitesmoke;
-    border-bottom: none;
-
+    background: #fff;
+    box-shadow:0 4px 12px rgba(0,0,0,0.06);
 }
 #recordsTable{
  
-    min-width: 1600px;
-    width: max-content;
+    min-width: 1500px;
+    width: 100%;
+    border-collapse: collapse;
     
 }
+
 #recordsTable th,
 #recordsTable td{
     padding:12px 16px;
@@ -183,7 +178,7 @@ input[type="submit"]:hover{
     white-space: nowrap;      
 }
 #recordsTable th{
-    background-color: #f3f3f3;
+    background: #f3f4f6;
     font-weight: 600;
 }
 #recordsTable tbody tr:nth-child(even){
@@ -194,20 +189,19 @@ input[type="submit"]:hover{
     gap: 6px;
 }
 #recordsTable tbody tr:hover{
-    background-color: #f0f7ff;
+    background: #eef6ff;
 }
 
 #recordsTable button{
     padding: 6px 10px;
     font-size: 12px;
-    border-radius: 4px;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
-    margin:2px
 
 }
 #recordsTable button:first-child{
-    background-color: #007bff;
+    background:#007bff;
     color: #fff;
 }
 #recordsTable button:last-child{
@@ -218,7 +212,7 @@ input[type="submit"]:hover{
 .sucess-popup{
     position: fixed;
     inset:0;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,.5);
     display: none;
     align-items: center;
     justify-content: center;
@@ -226,11 +220,12 @@ input[type="submit"]:hover{
 }
 .popup-box{
     background:#fff;
-    padding: 28px 40px;
-    border-radius: 8px;
+    padding: 28px 32px;
+    border-radius: 14px;
     text-align: center;
-    min-width: 300px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.3);
     
 }
 .popup-box p{
@@ -260,25 +255,19 @@ dialog::backdrop{
     .page-layout{
         flex-direction: column;
         align-items: stretch;
+        
     }
-    .main-container{
-        width: 100%;
-        max-width: 100%;
-    }
+    .main-container,
     .table-section{
-        overflow: hidden;
-    }
-    .heading{
+        width: 100%;
         max-width: 100%;
     }
-    .product-rating-1,
-    .product-rating-2{
-        flex-direction: column;
-        gap: 24px;
-    }
-    .product-rating-1-1,
-    .product-rating-2-2{
+    .table-container{
+        overflow-x: auto;
         width: 100%;
+    }
+    #recordsTable{
+        min-width: 1100px;
     }
 }
 
@@ -287,54 +276,23 @@ dialog::backdrop{
         padding: 12px;
         gap: 16px;
     }
+    .main-container
+    .table-section{
+        width: 100%;
+        max-width: 100%;
+        
+    }
     .main-container{
         padding: 16px;
     }
-    .main-heading{
-        font-size: 20px;
-    }
-    .sub-heading{
-        font-size: 15px;
-    }
-    label{
-        font-size: 14px;
-    }
-    input[type="text"],
-    input[type="date"],
-    textarea{
-        font-size: 16px;
-        height: 44px;
-    }
-    textarea{
-        height: 100px;
-    }
-    .fa-star{
-        font-size: 20px;
-    }
-    .star-rating{
-        gap:4px
-    }
-    .product-rating-1,
-    .product-rating-2{
-        gap:16px
-    }
-    .product-rating-1-1,
-    .product-rating-2-2{
-        min-width: 100%;
-    }
-   
-    input[type="submit"]{
-        font-size: 16px;
-        padding: 14px;
-    }
+    
     .table-container{
-        margin: 0px;
-    }
-    .table-heading h3 {
-        font-size: 16px;
+        width: 100%;
+        overflow-x: auto;
     }
     #recordsTable{
         font-size: 13px;
+        min-width: 900px;
     }
     #recordsTable th,
     #recordsTable td{

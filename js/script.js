@@ -208,7 +208,7 @@ form.onsubmit=function(e){
         valid=false;
 
     }
-    
+
     if(overallRating === 0){
         document.getElementById("overallError").innerText="Overall Rating is required"
         valid=false
@@ -305,9 +305,9 @@ function renderTable(){
     records.forEach(function(rec,index){
         var row = tableBody.insertRow();
 
-        row.insertCell().innerText=rec.pname;
-        row.insertCell().innerText=rec.sku;
-        row.insertCell().innerText=rec.date;
+            row.insertCell().innerText=rec.pname;
+            row.insertCell().innerText=rec.sku;
+            row.insertCell().innerText=rec.date;
 
         
         row.insertCell().innerText="★".repeat(rec.overall);
